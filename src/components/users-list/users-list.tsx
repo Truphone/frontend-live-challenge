@@ -1,4 +1,4 @@
-import { Box, Flex, IconButton, Input, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Input, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
 import { UserRow } from "./user-row.tsx";
 import { Pagination } from "./pagination.tsx";
