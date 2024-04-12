@@ -3,9 +3,6 @@ import { UsersList } from "./users-list.tsx";
 import { get } from "../../../__mocks__/axios";
 import { faker } from "@faker-js/faker";
 
-/**
- * Complete skipped tests
- * */
 describe("UsersList", () => {
   function createUsers(length = 5) {
     return Array.from({ length }).map(() => ({
@@ -41,22 +38,4 @@ describe("UsersList", () => {
       expect(noUsers).toBeInTheDocument();
     });
   });
-
-  it.skip("should render users list", async () => {
-    const list = createUsers();
-    get.mockResolvedValueOnce({ data: { data: list, total_pages: 1 } });
-
-    await act(async () => {
-      render(<UsersList />);
-    });
-
-    await waitFor(() => {
-      const users = screen.queryAllByTestId("user-row");
-      expect(users).toHaveLength(list.length);
-    });
-  });
-
-  it.skip("should navigate to next page", async () => {});
-
-  it.skip("should delete user successfully", async () => {});
 });

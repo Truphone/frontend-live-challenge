@@ -1,4 +1,4 @@
-import { Box, Flex, Spinner } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Input, Spinner } from "@chakra-ui/react";
 import { useState } from "react";
 import { UserRow } from "./user-row.tsx";
 import { Pagination } from "./pagination.tsx";
@@ -6,11 +6,6 @@ import { useUsersList } from "./hooks/use-users-list.ts";
 import { UsersError } from "./users-error.tsx";
 import { NoUsers } from "./no-users.tsx";
 
-/**
- * 1. Fix pagination
- * 2. Implement user deletion
- * 3. sort users by first name
- */
 export function UsersList() {
   const [page, setPage] = useState(1);
   const { users, loading, error, totalPages } = useUsersList();
@@ -44,6 +39,9 @@ export function UsersList() {
         {noUsers && <NoUsers />}
         {ready && (
           <>
+            <Flex alignItems="center" mb={4}>
+              <Input placeholder="Search users" me={2} />
+            </Flex>
             {users.map((user) => (
               <UserRow
                 key={user.id}

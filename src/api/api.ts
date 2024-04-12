@@ -19,6 +19,14 @@ export interface ApiUser {
 
 const api = axios.create({ baseURL: config.API_URL });
 
-export function listUsers(page: number = 1) {
+const requests: string[] = [];
+
+api.interceptors.request.use((config) => {
+  requests.push(`${config.baseURL}${config.url}`);
+  localStorage.setItem("networkCalls", JSON.stringify(requests));
+  return config;
+});
+
+export async function listUsers(page: number = 1) {
   return api.get<ApiListUsersResponse>(`/api/users?page=${page}`);
 }
