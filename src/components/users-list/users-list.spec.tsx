@@ -4,7 +4,8 @@ import { get } from "../../../__mocks__/axios";
 import { faker } from "@faker-js/faker";
 
 describe("UsersList", () => {
-  // eslint-disable-next-line
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   function createUsers(length = 5) {
     return Array.from({ length }).map(() => ({
       id: faker.number.int(),
